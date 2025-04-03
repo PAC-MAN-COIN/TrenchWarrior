@@ -1,0 +1,571 @@
+/* ---=== Global Styles & Variables ===--- */
+:root {
+    --primary-color: #b08968; /* Earthy brown */
+    --secondary-color: #7f5539; /* Darker brown */
+    --accent-color: #e6a000; /* Accent orange from banner text */
+    --text-color: #ede0d4;  /* Off-white / parchment */
+    --bg-color: #212529;    /* Dark grey/black */
+    --bg-light-dirt: #4a4e44; /* Muted green/brown */
+    --font-heading: 'Special Elite', cursive;
+    --font-body: 'Roboto', sans-serif;
+    --container-width: 1140px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+h2 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 .icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 2rem; /* Adjust icon size */
+    vertical-align: middle;
+}
+
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #fff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Add padding for smaller screens */
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: 2px solid var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.btn-buy {
+    background-color: #4CAF50; /* Green for buy */
+    color: white;
+    border: 2px solid #4CAF50;
+}
+
+.btn-buy:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+    color: white;
+}
+
+
+/* ---=== Header / Hero Section (REVISED) ===--- */
+.hero-section {
+    min-height: 100vh; /* Full viewport height */
+    display: flex;      /* Use flexbox for centering content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    padding: 2rem;
+    text-align: center;
+    position: relative; /* Needed for overlay and scroll indicator */
+    overflow: hidden;   /* Prevent content spill */
+
+    /* --- Background Image & Parallax --- */
+    /*
+     * ==================================================
+     * !! IMPORTANT !! CHECK THIS BACKGROUND IMAGE PATH !!
+     * ==================================================
+     * Make sure 'images/Banner.jpg' is the correct path and filename.
+     * If your image is Banner.png, change it to url('images/Banner.png')
+     */
+    background-image: url('images/Banner.png');
+
+    background-size: cover;       /* Cover the entire section */
+    background-position: center center; /* Center the image */
+    background-attachment: fixed; /* Creates the parallax effect */
+}
+
+/* Optional Overlay for Readability */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust darkness (0.0 to 1.0) */
+    z-index: 1; /* Place overlay below content but above background */
+}
+
+/* Content Container within Hero */
+.hero-content {
+    position: relative; /* Ensure content is above the overlay */
+    z-index: 2;         /* Higher than overlay */
+    max-width: 800px;   /* Limit width of content for readability */
+    padding: 20px;      /* Add some padding around content */
+    /* Optional: Add a subtle background to content if needed over complex banners */
+    /* background-color: rgba(33, 37, 41, 0.6); */
+    /* border-radius: 10px; */
+}
+
+/* Optional Hero Title Styling (if you added it back in HTML) */
+.hero-title {
+    font-size: 4.5rem; /* Make it large */
+    color: var(--accent-color); /* Use accent color */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Ensure visibility */
+    margin-bottom: 1rem;
+    font-family: var(--font-heading); /* Ensure correct font */
+    line-height: 1.1;
+}
+
+
+/* Adjust subtitle styling if needed */
+.hero-content .subtitle {
+    font-size: 1.6rem;
+    color: #f0f0f0; /* Lighter color for better contrast */
+    margin-bottom: 2.5rem; /* More space before buttons */
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Simple animation for subtitle */
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+.animated-subtitle {
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+
+
+/* Buttons inside hero */
+.hero-content .cta-buttons {
+    margin-top: 1.5rem;
+}
+
+/* Ensure buttons stand out */
+.hero-content .btn {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Make buttons slightly larger in hero? */
+    /* padding: 15px 30px; */
+    /* font-size: 1.1rem; */
+}
+
+
+/* Scroll Down Indicator */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-color);
+    text-align: center;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    z-index: 3; /* Make sure it's above overlay/content */
+}
+
+.scroll-down-indicator span {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    font-family: var(--font-heading);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Add shadow for visibility */
+}
+
+.scroll-down-indicator svg {
+    fill: var(--accent-color);
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.7)); /* Add shadow for visibility */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+
+/* ---=== Content Sections ===--- */
+.content-section {
+    padding: 60px 0;
+    border-bottom: 1px dashed var(--secondary-color); /* Separator */
+}
+
+.manifesto-section {
+    background-color: var(--bg-light-dirt); /* Slightly different background */
+     /* Optional: Add subtle texture */
+    /* background-image: url('images/paper_texture.png'); */
+}
+
+.episodes-section {
+    background-color: var(--bg-color);
+}
+
+.tokenomics-section {
+     background-color: var(--bg-light-dirt);
+      /* Optional: Add subtle texture */
+     /* background-image: url('images/metal_texture.png'); */
+}
+
+.community-section {
+    background-color: var(--bg-color);
+    border-bottom: none; /* No border on last section */
+}
+
+/* ---=== Episodes Grid ===--- */
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.episode-card {
+    background-color: #343a40; /* Dark card background */
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+}
+
+.episode-card.coming-soon {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: repeating-linear-gradient(
+        45deg,
+        #343a40,
+        #343a40 10px,
+        #495057 10px,
+        #495057 20px
+    ); /* Caution tape effect */
+}
+
+.episode-thumbnail {
+    margin-bottom: 1rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; /* Keep play button contained */
+    border-radius: 4px;
+}
+
+/* Ensure placeholder images don't break layout if missing */
+.episode-thumbnail img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    min-height: 150px; /* Example minimum height */
+    display: block;
+    transition: transform 0.3s ease;
+    background-color: #555; /* Placeholder background */
+    object-fit: cover; /* Cover the area nicely */
+}
+
+
+.episode-thumbnail:hover img {
+     transform: scale(1.05);
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--accent-color);
+    font-size: 3rem;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Make it unclickable itself */
+}
+
+.episode-thumbnail:hover .play-button {
+    opacity: 1;
+}
+
+.episode-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.watch-links {
+    margin-top: auto; /* Push links to the bottom */
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.watch-links a {
+    margin: 0 5px;
+    color: var(--text-color);
+}
+.watch-links a:hover {
+    color: var(--accent-color);
+}
+
+
+/* ---=== Tokenomics List ===--- */
+.token-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1.5rem;
+}
+
+.token-list li {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.token-list strong {
+    color: var(--primary-color);
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #aaa;
+    margin-top: 1.5rem;
+    border-top: 1px dashed var(--secondary-color);
+    padding-top: 1rem;
+}
+
+.token-links {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* ---=== Community / Social Links ===--- */
+.social-links {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.social-icon {
+    display: inline-block;
+    margin: 0 15px;
+    padding: 10px 15px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    min-width: 120px; /* Ensure buttons have some width */
+}
+
+.social-icon:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Optional: Add specific hover colors for branding */
+.social-icon.twitter:hover { background-color: #1DA1F2; border-color: #1DA1F2; color: white; }
+.social-icon.tiktok:hover { background-color: #000; border-color: #fe2c55; color: #fe2c55; } /* Rough TikTok colors */
+.social-icon.instagram:hover { background: #d6249f; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); border: none; color: white; }
+.social-icon.telegram:hover { background-color: #0088cc; border-color: #0088cc; color: white;}
+
+
+/* ---=== Footer ===--- */
+footer {
+    background-color: #1a1a1a; /* Darker footer */
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* ---=== Reveal Animation on Scroll ===--- */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ---=== Responsive Design ===--- */
+@media (max-width: 992px) {
+    h2 {
+        font-size: 2rem;
+    }
+    .hero-title { /* If using the H1 */
+        font-size: 3.5rem;
+    }
+    .hero-content .subtitle {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+     /* --- Background Image & Parallax (Disable fixed attachment on mobile) --- */
+    /* Fixed attachment can be jerky or unsupported on some mobile browsers */
+    .hero-section {
+       background-attachment: scroll; /* Change to scroll on mobile */
+    }
+
+    .hero-title { /* If using the H1 */
+        font-size: 2.8rem;
+    }
+     .hero-content .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    .hero-content .cta-buttons {
+         /* Stack buttons vertically */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+     }
+     .hero-content .cta-buttons .btn {
+         width: 70%; /* Adjust width as needed */
+         margin-bottom: 10px; /* Space between stacked buttons */
+         padding: 12px 20px; /* Adjust padding */
+         font-size: 1rem;
+     }
+
+    .episodes-grid {
+        grid-template-columns: 1fr; /* Stack episodes */
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+     .social-icon {
+        margin: 10px 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 15px;
+    }
+    .hero-title { /* If using the H1 */
+        font-size: 2.2rem;
+    }
+    .hero-content .subtitle {
+        font-size: 1.1rem;
+    }
+     .hero-content .cta-buttons .btn {
+         width: 85%; /* Wider buttons on small screens */
+     }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+    .btn { /* Global button padding adjustment for small screens */
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    .content-section {
+        padding: 40px 0;
+    }
+     .social-icon {
+        min-width: 100px; /* Smaller min-width */
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+}
